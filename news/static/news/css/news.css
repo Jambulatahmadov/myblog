@@ -5,3 +5,9 @@
     margin: 20px 34%;
     text-align: left;
 }
+
+.features {
+    clear: both;
+    width: 500px;
+    margin: 30px 34%;
+}
