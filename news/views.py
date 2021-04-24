@@ -9,6 +9,10 @@ class NewsDetail(DetailView):
     context_object_name = 'mynews'
 
 
+def create(request):
+    return render(request, 'news/create.html')
+
+
 def index(request):
     news = MyNews.objects.order_by('-date')
     return render(request, 'news/index.html', {'news': news})

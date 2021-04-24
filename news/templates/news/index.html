@@ -5,9 +5,10 @@
 {% block content %}
 <div>
     {% for i in news %}
-        <div class="alert alert-warning">
+        <div class="alert alert-info">
             <h3>{{ i.title }}</h3>
             <p>{{ i.anons }}</p>
+            <a href="{% url 'news_detail' i.id %}" class="btn btn-warning">Read more</a>
         </div>
     {% endfor %}
 </div>

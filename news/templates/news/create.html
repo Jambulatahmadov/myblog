@@ -1,0 +1,17 @@
+{% extends 'news/base.html' %}
+
+{% block title %}Create News Page{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Create News</h1>
+    <form method="post">
+        <input type="text" placeholder="news name"><br>
+        <input type="text" placeholder="news anons"><br>
+        <textarea placeholder="news content"></textarea><br>
+        <input type="date"><br>
+        <input type="time"><br>
+    </form>
+
+</div>
+{% endblock %}
