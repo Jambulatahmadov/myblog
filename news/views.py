@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import MyNews
 from django.views.generic import DetailView
+from .forms import MyNewsForm
 
 
 class NewsDetail(DetailView):
@@ -10,14 +11,25 @@ class NewsDetail(DetailView):
 
 
 def create(request):
-    return render(request, 'news/create.html')
+    error = ''
+    if request.method == 'POST':
+        form = MyNewsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+        else:
+            error = 'Не верная форма!'
+
+    form = MyNewsForm
+
+    date = {
+        'form': form,
+        'error': error
+    }
+    return render(request, 'news/create.html', date)
 
 
 def index(request):
     news = MyNews.objects.order_by('-date')
     return render(request, 'news/index.html', {'news': news})
 
-
-def about(request):
-    news = MyNews.objects.order_by('-date')
-    return render(request, 'news/about.html', {'news': news})
